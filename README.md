@@ -4,9 +4,6 @@ A browser console backed by a real Express API. Choose a scenario, predict a sta
 
 [Open the live demo](https://campus-help-desk-demo.onrender.com/classroom/)
 
-[Deploy to Render](https://render.com/deploy?repo=https://github.com/rithakith/campus-help-desk-demo)
-
-The Blueprint selects the free web service plan. Review the configuration in your Render account and deploy. The site root redirects to /classroom/. Free services may sleep after inactivity; open the site before class.
 
 ## Local use
 
