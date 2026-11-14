@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campus Help Desk · HTTP Lab</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172a38;background:#f2f5f3}*{box-sizing:border-box}body{margin:0}header{background:#123d38;color:white;padding:30px max(24px,5vw)}header small{color:#b4e6c5;letter-spacing:2px}h1{font-size:clamp(28px,4vw,44px);margin:8px 0}header p{max-width:750px;line-height:1.6;margin-bottom:0}main{max-width:1400px;margin:auto;padding:24px;display:grid;grid-template-columns:1fr 1.15fr;gap:24px}.panel{background:white;border:1px solid #d4dfd9;border-radius:16px;padding:24px}h2{margin-top:0;font-size:22px}.muted{color:#526670;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid #b7cbc1;background:#eef6f0;border-radius:8px;padding:11px;text-align:left;color:#163e32}button:hover{background:#d9eddf}button:focus-visible{outline:3px solid #edab30}button:disabled{opacity:.5;cursor:wait}.scenarios{display:grid;grid-template-columns:1fr 1fr;gap:9px}button strong{display:block;font-size:15px}button small{display:block;margin-top:4px;color:#536b60}label{display:block;margin-top:14px;font-weight:600}input,textarea,select{width:100%;border:1px solid #aabcb3;border-radius:7px;padding:10px;margin-top:6px;background:white}textarea{font-family:monospace;min-height:95px} .row{display:flex;gap:12px;align-items:end}.row label{flex:1}.row label:first-child{max-width:125px}.send{width:100%;margin-top:14px;background:#155b45;color:white;font-weight:700;text-align:center}.send:hover{background:#0b4634}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#142d35;color:#e5f4ed;border-radius:10px;padding:18px;line-height:1.55;min-height:100px}.badge{display:inline-block;padding:9px 14px;border-radius:30px;background:#e8eef0;font-size:22px;font-weight:800}.ok{background:#d6f3df;color:#14512d}.bad{background:#ffe6d5;color:#843506}.server{background:#f9dce6;color:#822043}.history{padding-left:22px;line-height:1.8}.tip{background:#fff6d9;padding:14px;border-radius:8px;line-height:1.5}details{margin-top:16px}summary{cursor:pointer;font-weight:600}.headers{font-size:13px}footer{padding:0 24px 30px;text-align:center;color:#526670}@media(max-width:850px){main{grid-template-columns:1fr}.scenarios{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><small>CLASSROOM HTTP LAB</small><h1>Campus Help Desk</h1><p>A student needs help. Their browser sends a request. Your Express server finds a route, does the work, and sends a response. Predict the status before pressing Send.</p></header>
+<main>
+<section class="panel"><h2>1. Choose a story</h2><p class="muted">A “task” is one help request. Buttons only prepare requests; press Send to see a real server response.</p><div id="scenarios" class="scenarios"></div>
+<h2 style="margin-top:26px">2. Inspect the request</h2>
+<div class="row"><label>Method<select id="method"><option>GET</option><option>POST</option><option>PATCH</option><option>DELETE</option></select></label><label>Path<input id="path" value="/api/tasks" spellcheck="false"></label></div>
+<label>JSON request body<textarea id="body" spellcheck="false"></textarea></label>
+<p class="muted">POST and PATCH send Content-Type: application/json. GET and DELETE send no body.</p>
+<label>Your prediction<select id="prediction"><option value="">Choose a status…</option><option>200</option><option>201</option><option>204</option><option>400</option><option>404</option><option>500</option></select></label>
+<button id="send" class="send">Send request →</button><p id="story" class="tip" aria-live="polite">Ask the class: “What will the server send back?”</p>
+<details><summary>Teacher controls</summary><p>Reset restores the three original requests. The 500 example deliberately throws an error. Memory also resets when you restart Node.</p><button id="reset">Reset classroom data</button></details></section>
+<section class="panel"><h2>3. Read the response</h2><div id="status" class="badge" aria-live="polite">Waiting for a request</div><p id="explanation" class="muted">A status code tells you the outcome. The body tells you the details.</p><strong>Request sent</strong><pre id="request">No request yet.</pre><strong>Response body</strong><pre id="response">No response yet.</pre><details><summary>Response headers</summary><pre id="headers" class="headers">No headers yet.</pre></details><h2 style="margin-top:26px">Recent requests</h2><ol id="history" class="history"></ol><p class="tip">Open browser DevTools → Network to see the same requests. A 400 or 404 is still a response from a running server.</p></section>
+</main><footer>Browser = client · Express = server · In-memory array = temporary storage</footer>
+<script src="app.js"></script>
+</body></html>
